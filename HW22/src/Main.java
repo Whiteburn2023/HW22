@@ -51,8 +51,9 @@ public class Main {
             return str.matches(".*\\d.*");
         }
 
-        private static void change (Integer index, String sub){
-            todos.set(index, sub);
+        private static void change (Integer index, String todo){
+            System.out.print("Дело " + todos.get(index) + " изменено на " + todo +"\n");
+            todos.set(index, todo);
         }
         //todo для выполнения дз создавать классы не нужно. Просто создавайте
         // необходимые вам методы и переменные. Основная логика программы будет в методе main
@@ -70,32 +71,31 @@ public class Main {
                 return;
             }
             todos.add(todo);
-            System.out.println("Дело " + todo + " успешно добавлено");
+            System.out.println("Добавлено дело: " + todo);
         }
 
         public static void add (Integer index, String todo){
             if (todos.contains(todo)) {
-                System.out.println("Дело " + todo + " уже есть в списке");
+                System.out.println("Добавлено дело: " + todo);
                 return;
             }
             if (index > todos.size()){
                 todos.add(todo);
-                System.out.println("Нет места под номером " + index);
-                System.out.println("Дело " + todo + " добавлено в конец списка");
+                System.out.println("Нет места под номером " + index + ". Дело " + todo + "добавлено в конец списка");
                 return;
             }
             todos.add(index, todo);
-            System.out.println("Дело " + todo + " успешно добавлено");
+            System.out.println("На " + index + " место добавлено дело: " + todo);
         }
 
         public static void delete (Integer index){
             if (!checkIndex(index)) {
-                System.out.println("Нет такого индекса");
+                System.out.println("Дела под номером " + index + " нет");
                 return;
             }
             String todo = todos.get(index);
             todos.remove(todo);
-            System.out.println("Дело - " + todo + " - успешно удалено");
+            System.out.println("Дело " + todo + " успешно удалено");
         }
 
         private static boolean checkIndex (Integer index){
@@ -104,13 +104,13 @@ public class Main {
 
         public static void printAll () {
             for (String todo : todos) {
-                System.out.println(todo);
+                System.out.println("Дело: " + todo);
             }
         }
 
         public static void printByIndex (Integer index){
             if (!checkIndex(index)) {
-                System.out.println("Нет такого индекса");
+                System.out.println("Дела под номером " + index + " нет");
                 return;
 
             }
